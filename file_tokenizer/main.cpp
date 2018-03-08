@@ -40,20 +40,18 @@ void test_f_tokenize_simple(){
 	Token t;
 	const char* path = "solitude.txt";
 	FTokenizer ftk(path);
-	ftk>>t;
+	ftk >> t;
 	int token_count = 0;
 	while (ftk.more()){
-		if (t.type_string()=="ALPHA" ){
+		if (t.type_string() == "ALPHA" ){
 			token_count++;
-			cout<<setw(10) << right <<token_count
-			<<setw(3)<<left<<":"<<setw(25)<<left<<t.token_str()
-			<<t.type_string()<< setw(20) << right << t.token_str().length() <<endl;
+			cout << setw(10) << right << token_count
+			<<setw(3) << left << ":" << setw(25) << left << t.token_str()
+			<<t.type_string()<< setw(20) << right << t.token_str().length() << endl;
 		}
-		ftk>>t;
+		ftk >> t;
 	}
-	cout<<"Tokens Found: "<<token_count<<endl;
-	cout<<"=========="<<endl;
-	
+	cout << "Tokens Found: " << token_count << endl;
 }
 
 void test_s_tokenizer()

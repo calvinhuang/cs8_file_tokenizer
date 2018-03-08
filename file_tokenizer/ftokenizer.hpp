@@ -3,7 +3,6 @@
 //  file_tokenizer
 //
 //  Created by Calvin Huang on 3/6/18.
-//  Copyright © 2018 Calvin Huang. All rights reserved.
 //
 
 #ifndef ftokenizer_hpp

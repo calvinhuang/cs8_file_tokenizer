@@ -18,19 +18,24 @@ FTokenizer::FTokenizer(const char* fname)
 		get_new_block();
 }
 
+FTokenizer::~FTokenizer()
+{
+	_f.close();
+}
+
 bool FTokenizer::get_new_block()
 {
 	if (_more)
 	{
-		char buffer[MAX_BUFFER];
-		_f.read(buffer, MAX_BUFFER - 1);
+		char buffer[MAX_BLOCK];
+		_f.read(buffer, MAX_BLOCK - 1);
 		buffer[_f.gcount()] = (char) 0;
 		if (_f.gcount() < 1)
 		{
 			_more = false;
 			return false;
 		}
-		else if (_f.gcount() < MAX_BUFFER - 1)
+		else if (_f.gcount() < MAX_BLOCK - 1)
 		{
 			_more = false;
 		}
@@ -43,16 +48,6 @@ bool FTokenizer::get_new_block()
 bool FTokenizer::more()
 {
 	return _stk.more() || _more;
-}
-
-int FTokenizer::pos()
-{
-	return _pos;
-}
-
-int FTokenizer::block_pos()
-{
-	return _blockPos;
 }
 
 Token FTokenizer::next_token()

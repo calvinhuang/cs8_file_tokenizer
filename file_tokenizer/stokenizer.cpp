@@ -11,9 +11,9 @@
 int STokenizer::_table[MAX_ROWS][MAX_COLUMNS] = { { } };
 
 // Display what state machine we're in for debugging
-string start_state_to_string(int start_state)
+string machine_name(int state)
 {
-	switch (start_state) {
+	switch (state) {
 		case NUMBER_START:
 		case NUMBER_START + 1:
 		case NUMBER_START + 2:

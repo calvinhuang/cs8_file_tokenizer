@@ -20,6 +20,9 @@ const int PUNCTUATION_TYPE = 2;
 const int SPACE_TYPE = 3;
 
 
+/** 
+ *
+ */
 class Token
 {
 public:

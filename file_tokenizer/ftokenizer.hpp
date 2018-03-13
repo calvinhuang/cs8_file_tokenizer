@@ -15,16 +15,15 @@
 #include <fstream>
 #include "stokenizer.hpp"
 
-/** File tokenizer
- *	Accepts a file and outputs Token objects
+/** File tokenizer.
+ *	Accepts a file and outputs Token objects.
  */
 class FTokenizer
 {
 public:
 	const int MAX_BLOCK = MAX_BUFFER;	//!< Make block read length the same as STokenizer's buffer size
 	
-	/** FTokenizer constructor
-	 *	Opens a file to be tokenized.
+	/** Opens a file to be tokenized.
 	 *	@param fname Filepath of the file to tokenize.
 	 *	@see set_string()
 	 */
@@ -35,6 +34,7 @@ public:
 	/** Fetch the next token from string tokenizer.
 	 *	If STokenizer has no more tokens, try to fetch another block from the file.
 	 *	@return Next token
+	 *	@see operator>>()
 	 */
 	Token next_token();
 	

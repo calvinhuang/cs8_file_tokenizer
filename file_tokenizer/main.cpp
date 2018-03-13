@@ -4,6 +4,10 @@
 //
 //  Created by Calvin Huang on 2/27/18.
 //
+//	This is a test of the FTokenizer class using Gabriel Garcia Marquez's
+//	1000 Years of Solitude. It counts andoutputs only the alphanumeric tokens
+//	and ignores non-ANSI characters (including multibyte Unicode characters).
+//
 
 #include <iostream>
 #include "stokenizer.hpp"
@@ -12,6 +16,12 @@
 #include <iomanip>
 using namespace std;
 
+
+/**	Format and output tokens.
+ *	Used by print_test() for STokenizer test.
+ *	@see print_test(const char* s)
+ *	@see test_s_tokenizer()
+ */
 void print_tokens(STokenizer stk)
 {
 	Token t;
@@ -23,11 +33,19 @@ void print_tokens(STokenizer stk)
 	}
 }
 
+/**	Print c-string in quotes.
+ *	Convenience function for testing.
+ *	@param s String to print.
+ */
 void print_string(const char* s)
 {
 	cout << '\"' << s << '"' << "\n\n";
 }
 
+/** Print single STokenizer test run.
+ *	@param s C-string to tokenize.
+ *	@param stk STokenizer stance to use for test.
+ */
 void print_test(const char*s, STokenizer &stk)
 {
 	print_string(s);
@@ -36,6 +54,9 @@ void print_test(const char*s, STokenizer &stk)
 	cout << "\n   =======\n\n";
 }
 
+/** FTokenizer test.
+ *	Test file tokenizer against a hard-coded file.
+ */
 void test_f_tokenize_simple(){
 	Token t;
 	const char* path = "solitude.txt";
@@ -54,6 +75,18 @@ void test_f_tokenize_simple(){
 	cout << "Tokens Found: " << token_count << endl;
 }
 
+/** STokenizer test suite.
+ *	Test STokenizer against a variety of test cases:
+ *		- Lowercase sentence containing numbers.
+ *		- Capitalized sentence containing whitespace characters.
+ *		- Empty string.
+ *		- String ending in a number.
+ *		- Another string ending in a number with punctuation.
+ *		- String ending in whitespaces.
+ *		- Lots of weird characters.
+ *		- Words, numbers, punctuation, whitespaces and unknowns.
+ *		- Just whitespaces.
+ */
 void test_s_tokenizer()
 {
 	STokenizer stk;
@@ -79,7 +112,7 @@ void test_s_tokenizer()
 	char s7[] = ",+(,-)+:;\nWhat's going on!?\t###$#%$%";
 	print_test(s7, stk);
 	
-	char s8[] = "alpha, 8.88, 01, 32, 666666, alpha ! . +";
+	char s8[] = "alpha, 8.88, 01, 32, r2d2, 666666, alpha ! . +";
 	print_test(s8, stk);
 	
 	char s9[] = " \t\n \t\n \t\n \t\n";
